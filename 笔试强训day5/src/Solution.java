@@ -10,7 +10,7 @@ public class Solution {
      * @return intÕûĞÍ
      */
     public int rotApple (ArrayList<ArrayList<Integer>> grid) {
-        
+
         return 0;
     }
 }
