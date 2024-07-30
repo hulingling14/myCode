@@ -6,36 +6,27 @@ public class Main {
     public static PrintWriter out = new PrintWriter(new BufferedWriter(
             new OutputStreamWriter(System.out)));
     public static Read in = new Read();
-
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-        int m = in.nextInt();
-        int a = in.nextInt();
-        int b = in.nextInt();
-        int prescent = 0;
-        while ((n - 2 >= 0 && m - 1 >= 0) || (n - 1 >= 0 && m - 2 >= 0)) {
-            if (n - 2 >= 0 && m - 1 >= 0 && prescent + a > prescent + b) {
-                prescent += a;
-                n = n - 2;
-                m = m - 1;
-            } else if (n - 1 >= 0 && m - 2 >= 0) {
-                prescent += b;
-                n = n - 1;
-                m = m - 2;
+        char[] str1 = in.next().toCharArray();
+        char[] str2 = in.next().toCharArray();
+        ArrayList<Character> a1 = new ArrayList<>();
+        ArrayList<Character> a2 = new ArrayList<>();
+        for (int i = 0; i < str1.length; i++) {
+            a1.add(str1[i]);
+        }
+        for (int i = 0; i < str2.length; i++) {
+            a2.add(str2[i]);
+            if (a1.contains(str2[i])) {
+                a1.remove(a1.indexOf(str2[i]));
+            } else {
+                System.out.println("No");
+                return;
             }
         }
-        System.out.println(prescent);
-        //System.out.println(getMax(n,m,a,b,prescent));
+        System.out.println("Yes");
     }
-//    public static int getMax(int n,int m,int a,int b,int p){
-//        if((n-2>=0&&m-1>=0)||(n-1>=0&&m-2>=0)){
-//            return getMax(n-=2,m--,a,b,p+=a)>getMax(n--,m-=2,a,b,p+=b)?getMax(n-=2,m--,a,b,p+=a):getMax(n--,m-=2,a,b,p+=b);
-//        }
-//        return p;
-//    }
 }
-
 class Read {
     StringTokenizer st = new StringTokenizer("");
     BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
